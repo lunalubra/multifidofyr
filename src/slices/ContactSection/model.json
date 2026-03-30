@@ -1,0 +1,50 @@
+{
+  "id": "contact_section",
+  "type": "SharedSlice",
+  "name": "ContactSection",
+  "description": "Seccion de contacto con formulario e informacion",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Formulario de contacto e info",
+      "primary": {
+        "section_id": {
+          "type": "Text",
+          "config": { "label": "ID de seccion", "placeholder": "contacto" }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": { "label": "Titulo", "placeholder": "Contacto", "single": "heading2" }
+        },
+        "address": {
+          "type": "StructuredText",
+          "config": { "label": "Direccion", "placeholder": "Calle Valdemoro 11...", "multi": "paragraph" }
+        },
+        "email": {
+          "type": "Text",
+          "config": { "label": "Email", "placeholder": "multifidofyr@gmail.com" }
+        },
+        "phone": {
+          "type": "Text",
+          "config": { "label": "Telefono", "placeholder": "604940941" }
+        },
+        "hours_weekday": {
+          "type": "Text",
+          "config": { "label": "Horario entre semana", "placeholder": "Lunes a Viernes: 10:00-14:00 y 16:00-20:00" }
+        },
+        "hours_saturday": {
+          "type": "Text",
+          "config": { "label": "Horario sabados", "placeholder": "Sabados: 09:00-13:00" }
+        },
+        "doctoralia_link": {
+          "type": "Link",
+          "config": { "label": "Enlace Doctoralia" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

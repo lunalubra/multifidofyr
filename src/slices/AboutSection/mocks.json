@@ -1,0 +1,22 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "about_section",
+    "items": [
+      {
+        "pillar_title": "Variabilidad",
+        "pillar_description": [{ "type": "paragraph", "text": "Abordamos tu lesion desde multiples enfoques terapeuticos.", "spans": [] }]
+      },
+      {
+        "pillar_title": "Feedback de Resultados",
+        "pillar_description": [{ "type": "paragraph", "text": "Monitorizacion constante con mediciones objetivas.", "spans": [] }]
+      }
+    ],
+    "primary": {
+      "section_id": "quienes-somos",
+      "heading": [{ "type": "heading2", "text": "Quienes Somos", "spans": [] }],
+      "description": [{ "type": "paragraph", "text": "Clinica de fisioterapia en Leganes.", "spans": [] }]
+    }
+  }
+]

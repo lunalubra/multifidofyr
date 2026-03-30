@@ -1,0 +1,35 @@
+{
+  "id": "clinic_gallery",
+  "type": "SharedSlice",
+  "name": "ClinicGallery",
+  "description": "Galeria de imagenes de las instalaciones",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Grid de imagenes de la clinica",
+      "primary": {
+        "section_id": {
+          "type": "Text",
+          "config": { "label": "ID de seccion", "placeholder": "instalaciones" }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": { "label": "Titulo", "placeholder": "Nuestras Instalaciones", "single": "heading2" }
+        }
+      },
+      "items": {
+        "image_url": {
+          "type": "Text",
+          "config": { "label": "Ruta de imagen", "placeholder": "/images/clinic/recepcion-arte.jpg" }
+        },
+        "alt_text": {
+          "type": "Text",
+          "config": { "label": "Texto alternativo", "placeholder": "Recepcion de la clinica" }
+        }
+      }
+    }
+  ]
+}

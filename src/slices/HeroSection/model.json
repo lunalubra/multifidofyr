@@ -1,0 +1,54 @@
+{
+  "id": "hero_section",
+  "type": "SharedSlice",
+  "name": "HeroSection",
+  "description": "Hero principal con imagen de fondo, titulo y CTA",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Hero section con imagen de fondo",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titulo",
+            "placeholder": "Fisioterapia & Readaptacion",
+            "single": "heading1"
+          }
+        },
+        "tagline": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitulo",
+            "placeholder": "Especialistas en...",
+            "single": "paragraph"
+          }
+        },
+        "cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Texto del boton",
+            "placeholder": "Reserva tu Cita"
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Enlace del boton"
+          }
+        },
+        "background_image_url": {
+          "type": "Text",
+          "config": {
+            "label": "Ruta de imagen de fondo",
+            "placeholder": "/images/clinic/sala-ejercicio.jpg"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

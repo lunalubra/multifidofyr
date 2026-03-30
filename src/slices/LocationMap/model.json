@@ -1,0 +1,33 @@
+{
+  "id": "location_map",
+  "type": "SharedSlice",
+  "name": "LocationMap",
+  "description": "Seccion con mapa de ubicacion de la clinica",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Mapa de Google Maps",
+      "primary": {
+        "section_id": {
+          "type": "Text",
+          "config": { "label": "ID de seccion", "placeholder": "donde-estamos" }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": { "label": "Titulo", "placeholder": "Donde Estamos", "single": "heading2" }
+        },
+        "map_embed_url": {
+          "type": "Text",
+          "config": {
+            "label": "URL de embed de Google Maps",
+            "placeholder": "https://www.google.com/maps/embed?pb=..."
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

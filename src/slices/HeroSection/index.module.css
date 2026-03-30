@@ -1,0 +1,160 @@
+.hero {
+  position: relative;
+  min-height: 70dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.imageContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 46, 31, 0.4) 0%,
+    rgba(26, 46, 31, 0.25) 40%,
+    rgba(26, 46, 31, 0.35) 70%,
+    rgba(26, 46, 31, 0.65) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-5);
+  max-width: 860px;
+}
+
+.heading h1 {
+  font-size: var(--text-5xl);
+  color: white;
+  text-wrap: balance;
+  margin-bottom: var(--space-5);
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+.tagline p {
+  font-size: var(--text-lg);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-8);
+  max-width: 520px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px var(--space-7);
+  background: var(--bg-dark);
+  color: white;
+  font-size: var(--text-base);
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition:
+    background-color 150ms ease,
+    transform 100ms ease;
+  touch-action: manipulation;
+}
+
+.ctaPrimary:hover {
+  background: var(--bg-dark-elevated);
+  transform: translateY(-1px);
+}
+
+.ctaPrimary:active {
+  transform: translateY(0);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px var(--space-7);
+  background: transparent;
+  color: white;
+  font-size: var(--text-base);
+  font-weight: 500;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 100ms ease;
+  touch-action: manipulation;
+}
+
+.ctaSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.ctaSecondary:active {
+  transform: translateY(0);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-7);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.5);
+  animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading h1 {
+    font-size: var(--text-4xl);
+  }
+
+  .tagline p {
+    font-size: var(--text-base);
+    letter-spacing: 0.05em;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    padding: 12px var(--space-6);
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "about_section",
+  "type": "SharedSlice",
+  "name": "AboutSection",
+  "description": "Seccion Quienes Somos con pilares de la clinica",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "About section con pilares",
+      "primary": {
+        "section_id": {
+          "type": "Text",
+          "config": {
+            "label": "ID de seccion",
+            "placeholder": "quienes-somos"
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titulo",
+            "placeholder": "Quienes Somos",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descripcion",
+            "placeholder": "Texto introductorio...",
+            "multi": "paragraph,strong,em"
+          }
+        }
+      },
+      "items": {
+        "pillar_title": {
+          "type": "Text",
+          "config": {
+            "label": "Titulo del pilar",
+            "placeholder": "Variabilidad"
+          }
+        },
+        "pillar_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descripcion del pilar",
+            "placeholder": "Descripcion...",
+            "multi": "paragraph"
+          }
+        }
+      }
+    }
+  ]
+}

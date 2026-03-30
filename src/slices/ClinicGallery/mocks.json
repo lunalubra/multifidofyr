@@ -1,0 +1,15 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "clinic_gallery",
+    "items": [
+      { "image_url": "/images/clinic/recepcion-arte.jpg", "alt_text": "Recepcion con arte anatomico" },
+      { "image_url": "/images/clinic/sala-ejercicio.jpg", "alt_text": "Sala de ejercicio" }
+    ],
+    "primary": {
+      "section_id": "instalaciones",
+      "heading": [{ "type": "heading2", "text": "Nuestras Instalaciones", "spans": [] }]
+    }
+  }
+]

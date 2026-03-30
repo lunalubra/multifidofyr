@@ -1,0 +1,18 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "services_section",
+    "items": [
+      {
+        "service_name": "Fisioterapia",
+        "service_description": [{ "type": "paragraph", "text": "Tratamiento personalizado de lesiones.", "spans": [] }]
+      }
+    ],
+    "primary": {
+      "section_id": "servicios",
+      "heading": [{ "type": "heading2", "text": "Nuestros Servicios", "spans": [] }],
+      "description": [{ "type": "paragraph", "text": "Ofrecemos una amplia gama de servicios.", "spans": [] }]
+    }
+  }
+]

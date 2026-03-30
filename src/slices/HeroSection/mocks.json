@@ -1,0 +1,19 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "hero_section",
+    "items": [],
+    "primary": {
+      "heading": [
+        { "type": "heading1", "text": "Fisioterapia & Readaptacion", "spans": [] }
+      ],
+      "tagline": [
+        { "type": "paragraph", "text": "Especialistas en prevencion y readaptacion de lesiones", "spans": [] }
+      ],
+      "cta_label": "Reserva tu Cita",
+      "cta_link": { "link_type": "Web", "url": "#contacto" },
+      "background_image_url": "/images/clinic/sala-ejercicio.jpg"
+    }
+  }
+]

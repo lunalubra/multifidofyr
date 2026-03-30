@@ -1,0 +1,19 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "team_section",
+    "items": [
+      {
+        "name": "Alicia Martin Perez",
+        "role": "CEO y Fisioterapeuta",
+        "credentials": "Colegiada n. 2844",
+        "bio": [{ "type": "paragraph", "text": "Especialista en prevencion y readaptacion de lesiones.", "spans": [] }]
+      }
+    ],
+    "primary": {
+      "section_id": "equipo",
+      "heading": [{ "type": "heading2", "text": "Nuestro Equipo", "spans": [] }]
+    }
+  }
+]

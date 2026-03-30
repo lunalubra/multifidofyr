@@ -1,0 +1,57 @@
+{
+  "id": "services_section",
+  "type": "SharedSlice",
+  "name": "ServicesSection",
+  "description": "Seccion de servicios ofrecidos por la clinica",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Grid de servicios",
+      "primary": {
+        "section_id": {
+          "type": "Text",
+          "config": {
+            "label": "ID de seccion",
+            "placeholder": "servicios"
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titulo",
+            "placeholder": "Nuestros Servicios",
+            "single": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descripcion",
+            "placeholder": "Texto introductorio...",
+            "multi": "paragraph,strong,em"
+          }
+        }
+      },
+      "items": {
+        "service_name": {
+          "type": "Text",
+          "config": {
+            "label": "Nombre del servicio",
+            "placeholder": "Fisioterapia"
+          }
+        },
+        "service_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descripcion del servicio",
+            "placeholder": "Descripcion...",
+            "multi": "paragraph,strong,em"
+          }
+        }
+      }
+    }
+  ]
+}

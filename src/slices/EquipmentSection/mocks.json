@@ -1,0 +1,19 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "equipment_section",
+    "items": [
+      {
+        "equipment_name": "Ecografo Mindray",
+        "equipment_description": [{ "type": "paragraph", "text": "Diagnostico por ecografia de alta resolucion.", "spans": [] }],
+        "equipment_image_url": "/images/equipment/ecografo.webp"
+      }
+    ],
+    "primary": {
+      "section_id": "tecnologia",
+      "heading": [{ "type": "heading2", "text": "Tecnologia Avanzada", "spans": [] }],
+      "description": [{ "type": "paragraph", "text": "Contamos con tecnologia de ultima generacion.", "spans": [] }]
+    }
+  }
+]

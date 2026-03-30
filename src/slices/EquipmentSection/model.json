@@ -1,0 +1,43 @@
+{
+  "id": "equipment_section",
+  "type": "SharedSlice",
+  "name": "EquipmentSection",
+  "description": "Seccion de tecnologia y equipamiento avanzado",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Cards de equipamiento",
+      "primary": {
+        "section_id": {
+          "type": "Text",
+          "config": { "label": "ID de seccion", "placeholder": "tecnologia" }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": { "label": "Titulo", "placeholder": "Tecnologia Avanzada", "single": "heading2" }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": { "label": "Descripcion", "placeholder": "Contamos con...", "multi": "paragraph,strong,em" }
+        }
+      },
+      "items": {
+        "equipment_name": {
+          "type": "Text",
+          "config": { "label": "Nombre del equipo", "placeholder": "Ecografo Mindray" }
+        },
+        "equipment_description": {
+          "type": "StructuredText",
+          "config": { "label": "Descripcion", "placeholder": "Descripcion...", "multi": "paragraph" }
+        },
+        "equipment_image_url": {
+          "type": "Text",
+          "config": { "label": "Ruta de imagen", "placeholder": "/images/equipment/ecografo.webp" }
+        }
+      }
+    }
+  ]
+}

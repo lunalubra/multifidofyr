@@ -1,0 +1,15 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "video_section",
+    "items": [
+      { "video_url": "/videos/sintesis-1.mp4", "video_title": "Nuestra clinica" }
+    ],
+    "primary": {
+      "section_id": "conocenos",
+      "heading": [{ "type": "heading2", "text": "Conocenos", "spans": [] }],
+      "description": [{ "type": "paragraph", "text": "Descubre nuestras instalaciones.", "spans": [] }]
+    }
+  }
+]

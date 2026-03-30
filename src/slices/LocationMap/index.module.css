@@ -1,0 +1,35 @@
+.header {
+  text-align: center;
+  margin-bottom: var(--space-9);
+}
+
+.heading h2 {
+  font-size: var(--text-4xl);
+}
+
+.mapContainer {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.map {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  display: block;
+}
+
+.address {
+  text-align: center;
+  margin-top: var(--space-5);
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .map {
+    aspect-ratio: 4 / 3;
+  }
+}

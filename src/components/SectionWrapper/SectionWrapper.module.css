@@ -1,0 +1,14 @@
+.section {
+  padding-block: var(--space-10);
+  scroll-margin-top: var(--header-height);
+}
+
+.elevated {
+  background: var(--bg-elevated);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--space-9);
+  }
+}
