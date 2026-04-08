@@ -1,7 +1,7 @@
 import {
   createClient as baseCreateClient,
   ClientConfig,
-  Route,
+  Route
 } from "@prismicio/client";
 import { enableAutoPreviews } from "@prismicio/next";
 import sm from "../slicemachine.config.json";
@@ -17,7 +17,8 @@ export const repositoryName =
  */
 const routes: Route[] = [
   { type: "page", uid: "home", path: "/" },
-  { type: "page", path: "/:uid" },
+  { type: "blog_post", path: "/blog/:uid" }
+  // { type: "page", path: "/:uid" }
 ];
 
 /**
@@ -33,7 +34,7 @@ export function createClient(config: ClientConfig = {}) {
       process.env.NODE_ENV === "production"
         ? { next: { tags: ["prismic"] }, cache: "force-cache" }
         : { next: { revalidate: 5 } },
-    ...config,
+    ...config
   });
 
   enableAutoPreviews({ client });

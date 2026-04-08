@@ -25,13 +25,16 @@
   --bg-elevated: #f3efe8;
   --bg-sunken: var(--sand-4);
   --bg-card: #ffffff;
+  --bg-card-hover: #fefdfb;
   --bg-dark: #1a2e1f;
   --bg-dark-elevated: #223828;
+  --bg-dark-card: #2a4433;
 
   /* Borders - warm sand tones */
   --border-subtle: var(--sand-5);
   --border-default: var(--sand-6);
   --border-strong: var(--sand-8);
+  --border-accent: var(--grass-6);
 
   /* Text */
   --text-primary: var(--olive-12);
@@ -39,6 +42,7 @@
   --text-muted: var(--olive-9);
   --text-on-dark: #f0ede7;
   --text-on-dark-muted: rgba(240, 237, 231, 0.65);
+  --text-on-dark-subtle: rgba(240, 237, 231, 0.45);
 
   /* Brand / Accent - deep premium green */
   --accent-solid: var(--grass-12);
@@ -46,6 +50,16 @@
   --accent-text: var(--grass-11);
   --accent-subtle: var(--grass-3);
   --accent-muted: var(--grass-5);
+  --accent-ghost: rgba(41, 124, 59, 0.06);
+
+  /* Warm accent — earthy gold for secondary highlights */
+  --warm-accent: #b8860b;
+  --warm-accent-subtle: rgba(184, 134, 11, 0.08);
+  --warm-accent-muted: rgba(184, 134, 11, 0.15);
+
+  /* Success */
+  --success: var(--grass-9);
+  --success-subtle: var(--grass-3);
 
   /* Error */
   --error: var(--red-9);
@@ -56,35 +70,50 @@
   --font-body: var(--font-inter), system-ui, sans-serif;
   --heading-letter-spacing: -0.03em;
 
-  /* Type scale (fluid) */
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
-  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
-  --text-xl: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+  /* Type scale (fluid, 1.25 major second ratio) */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.83rem + 0.2vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
   --text-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
   --text-3xl: clamp(1.875rem, 1.4rem + 2vw, 2.5rem);
   --text-4xl: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
   --text-5xl: clamp(3rem, 2rem + 4vw, 4.5rem);
+  --text-6xl: clamp(3.5rem, 2.2rem + 5.5vw, 6rem);
 
-  /* Shadows - softer, warmer */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.03), 0 2px 16px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.04), 0 4px 32px rgba(0, 0, 0, 0.06);
+  /* Shadows - warm, with depth */
+  --shadow-sm: 0 1px 2px rgba(28, 25, 20, 0.03), 0 1px 3px rgba(28, 25, 20, 0.04);
+  --shadow-md: 0 4px 8px rgba(28, 25, 20, 0.04), 0 2px 12px rgba(28, 25, 20, 0.03);
+  --shadow-lg: 0 12px 32px rgba(28, 25, 20, 0.06), 0 4px 16px rgba(28, 25, 20, 0.04);
+  --shadow-xl: 0 20px 48px rgba(28, 25, 20, 0.08), 0 8px 24px rgba(28, 25, 20, 0.05);
+  --shadow-accent: 0 4px 16px rgba(41, 124, 59, 0.12);
+  --shadow-lift: 0 8px 24px rgba(28, 25, 20, 0.08), 0 2px 8px rgba(28, 25, 20, 0.04);
 
   /* Radii - premium */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+  --radius-2xl: 32px;
   --radius-pill: 999px;
 
   /* Layout */
   --max-width: 1200px;
   --header-height: 80px;
 
-  /* Easing */
-  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Easing - expressive, not bouncy */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Timing */
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 350ms;
+  --duration-entrance: 600ms;
+  --duration-stagger: 80ms;
 }
 
 /* === Reset === */
@@ -118,13 +147,14 @@ h5,
 h6 {
   font-family: var(--font-heading);
   letter-spacing: var(--heading-letter-spacing);
-  line-height: 1.15;
+  line-height: 1.1;
   text-wrap: balance;
   color: var(--text-primary);
 }
 
 p {
   text-wrap: pretty;
+  max-width: 75ch;
 }
 
 img {
@@ -175,6 +205,95 @@ ol {
 
 .skip-link:focus {
   top: var(--space-4);
+}
+
+/* === Entrance Animations === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealLine {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(41, 124, 59, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(41, 124, 59, 0.08);
+  }
+}
+
+/* === Selection === */
+::selection {
+  background: rgba(41, 124, 59, 0.15);
+  color: var(--text-primary);
 }
 
 /* === Reduced motion === */

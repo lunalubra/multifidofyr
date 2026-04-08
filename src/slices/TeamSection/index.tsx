@@ -1,26 +1,34 @@
+"use client";
+
 import { type FC } from "react";
 import { type Content } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
 import { Container } from "@/components/Container/Container";
+import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import styles from "./index.module.css";
 
 type TeamSectionProps = SliceComponentProps<Content.TeamSectionSlice>;
 
 const TeamSection: FC<TeamSectionProps> = ({ slice }) => {
+  const headerRef = useScrollReveal<HTMLDivElement>();
+  const gridRef = useStaggerReveal<HTMLDivElement>(slice.items.length, {
+    staggerDelay: 120,
+  });
+
   return (
     <section
       id={slice.primary.section_id || "equipo"}
       className={styles.section}
     >
       <Container>
-        <div className={styles.header}>
+        <div className={styles.header} ref={headerRef}>
           <span className={styles.eyebrow}>Nuestro Equipo</span>
           <div className={styles.heading}>
             <PrismicRichText field={slice.primary.heading} />
           </div>
         </div>
 
-        <div className={styles.grid}>
+        <div className={styles.grid} ref={gridRef}>
           {slice.items.map((member, i) => {
             const initials = (member.name || "")
               .split(" ")

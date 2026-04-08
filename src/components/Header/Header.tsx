@@ -1,14 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Container } from "@/components/Container/Container";
 import styles from "./Header.module.css";
 
 const navLinks = [
-  { label: "Quienes Somos", href: "#quienes-somos" },
-  { label: "Equipo", href: "#equipo" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Quienes Somos", href: "/#quienes-somos" },
+  { label: "Equipo", href: "/#equipo" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export function Header() {
@@ -40,9 +42,9 @@ export function Header() {
     >
       <Container>
         <nav className={styles.nav} aria-label="Navegacion principal">
-          <a href="/" className={styles.logo}>
+          <Link href="/" className={styles.logo}>
             Multifido
-          </a>
+          </Link>
 
           <ul className={styles.navLinks}>
             {navLinks.map((link) => (
@@ -54,7 +56,7 @@ export function Header() {
             ))}
           </ul>
 
-          <a href="#donde-estamos" className={styles.cta}>
+          <a href="/#contacto" className={styles.cta}>
             Visitanos
           </a>
 
@@ -88,7 +90,7 @@ export function Header() {
               ))}
               <li>
                 <a
-                  href="#donde-estamos"
+                  href="/#contacto"
                   className={styles.mobileCta}
                   onClick={closeMenu}
                 >

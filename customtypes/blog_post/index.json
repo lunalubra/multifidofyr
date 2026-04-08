@@ -1,0 +1,108 @@
+{
+  "id": "blog_post",
+  "label": "Blog Post",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "URL Slug"
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Titulo",
+          "placeholder": "Titulo del articulo",
+          "allowTargetBlank": true,
+          "single": "heading1"
+        }
+      },
+      "featured_image": {
+        "type": "Image",
+        "config": {
+          "label": "Imagen Destacada",
+          "constraint": {
+            "width": 1600,
+            "height": 900
+          },
+          "thumbnails": [
+            {
+              "name": "card",
+              "width": 800,
+              "height": 500
+            }
+          ]
+        }
+      },
+      "excerpt": {
+        "type": "Text",
+        "config": {
+          "label": "Extracto",
+          "placeholder": "Breve descripcion del articulo (1-2 frases)"
+        }
+      },
+      "category": {
+        "type": "Text",
+        "config": {
+          "label": "Categoria",
+          "placeholder": "Ej: Fisioterapia, Readaptacion, Bienestar"
+        }
+      },
+      "publication_date": {
+        "type": "Date",
+        "config": {
+          "label": "Fecha de Publicacion"
+        }
+      },
+      "author": {
+        "type": "Text",
+        "config": {
+          "label": "Autor",
+          "placeholder": "Nombre del autor"
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Contenido del Articulo",
+        "config": {
+          "choices": {
+            "rich_text": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "Titulo para SEO y redes sociales"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "Descripcion para SEO"
+        }
+      },
+      "meta_image": {
+        "type": "Image",
+        "config": {
+          "label": "Meta Image",
+          "constraint": {
+            "width": 2400,
+            "height": 1260
+          },
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

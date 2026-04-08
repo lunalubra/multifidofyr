@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  min-height: 70dvh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,25 +9,45 @@
 
 .imageContainer {
   position: absolute;
-  inset: 0;
+  inset: -10%;
   z-index: 0;
+  will-change: transform;
 }
 
 .bgImage {
   object-fit: cover;
-  object-position: center;
+  object-position: center 40%;
+  animation: heroImageReveal 1.8s var(--ease-out-expo) both;
+}
+
+@keyframes heroImageReveal {
+  from {
+    transform: scale(1.15);
+    filter: blur(8px);
+    opacity: 0;
+  }
+  60% {
+    filter: blur(0px);
+  }
+  to {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(26, 46, 31, 0.4) 0%,
-    rgba(26, 46, 31, 0.25) 40%,
-    rgba(26, 46, 31, 0.35) 70%,
-    rgba(26, 46, 31, 0.65) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      rgba(26, 46, 31, 0.6) 0%,
+      rgba(26, 46, 31, 0.15) 30%,
+      rgba(26, 46, 31, 0.1) 50%,
+      rgba(26, 46, 31, 0.35) 70%,
+      rgba(26, 46, 31, 0.8) 100%
+    );
 }
 
 .content {
@@ -38,55 +58,90 @@
   align-items: center;
   text-align: center;
   padding: var(--space-5);
-  max-width: 860px;
+  max-width: 1000px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-5);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-7);
+  animation: fadeInUp var(--duration-entrance) var(--ease-out-expo) 100ms both;
 }
 
 .heading h1 {
-  font-size: var(--text-5xl);
+  font-size: var(--text-6xl);
   color: white;
   text-wrap: balance;
-  margin-bottom: var(--space-5);
-  line-height: 1.05;
+  margin-bottom: var(--space-6);
+  line-height: 0.95;
   font-weight: 700;
+  animation: fadeInUp 800ms var(--ease-out-expo) 250ms both;
+}
+
+.divider {
+  width: 64px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  margin-bottom: var(--space-6);
+  animation: fadeInUp 800ms var(--ease-out-expo) 400ms both;
+}
+
+.tagline {
+  animation: fadeInUp 800ms var(--ease-out-expo) 500ms both;
 }
 
 .tagline p {
   font-size: var(--text-lg);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-8);
-  max-width: 520px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-9);
+  max-width: 560px;
+  line-height: 1.6;
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-5);
   flex-wrap: wrap;
   justify-content: center;
+  animation: fadeInUp 800ms var(--ease-out-expo) 650ms both;
 }
 
 .ctaPrimary {
   display: inline-flex;
   align-items: center;
-  padding: 14px var(--space-7);
-  background: var(--bg-dark);
-  color: white;
+  gap: var(--space-3);
+  padding: 18px var(--space-7);
+  background: white;
+  color: var(--bg-dark);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: 600;
   border-radius: var(--radius-pill);
   text-decoration: none;
   transition:
-    background-color 150ms ease,
-    transform 100ms ease;
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-slow) var(--ease-out),
+    gap var(--duration-normal) var(--ease-out);
   touch-action: manipulation;
 }
 
 .ctaPrimary:hover {
-  background: var(--bg-dark-elevated);
-  transform: translateY(-1px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  gap: var(--space-4);
 }
 
 .ctaPrimary:active {
@@ -96,65 +151,89 @@
 .ctaSecondary {
   display: inline-flex;
   align-items: center;
-  padding: 14px var(--space-7);
+  padding: 18px var(--space-7);
   background: transparent;
   color: white;
   font-size: var(--text-base);
   font-weight: 500;
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-pill);
   text-decoration: none;
   transition:
-    background-color 150ms ease,
-    border-color 150ms ease,
-    transform 100ms ease;
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
   touch-action: manipulation;
 }
 
 .ctaSecondary:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-3px);
 }
 
 .ctaSecondary:active {
   transform: translateY(0);
 }
 
+/* Scroll indicator — animated line */
 .scrollIndicator {
   position: absolute;
   bottom: var(--space-7);
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-  color: rgba(255, 255, 255, 0.5);
-  animation: float 2.5s ease-in-out infinite;
+  animation: fadeIn 1s var(--ease-out) 1.5s both;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-    opacity: 0.5;
+.scrollLine {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent);
+  animation: scrollPulse 2.5s var(--ease-in-out) infinite;
+}
+
+@keyframes scrollPulse {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 1;
   }
   50% {
-    transform: translateX(-50%) translateY(6px);
-    opacity: 0.9;
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 1;
+  }
+  50.01% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    opacity: 0.3;
   }
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 90dvh;
+  }
+
   .heading h1 {
-    font-size: var(--text-4xl);
+    font-size: var(--text-5xl);
   }
 
   .tagline p {
     font-size: var(--text-base);
-    letter-spacing: 0.05em;
   }
 
   .ctaPrimary,
   .ctaSecondary {
-    padding: 12px var(--space-6);
+    padding: 16px var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  .badge {
+    margin-bottom: var(--space-6);
   }
 }

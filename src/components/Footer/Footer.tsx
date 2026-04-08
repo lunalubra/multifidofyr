@@ -1,17 +1,37 @@
+import Link from "next/link";
 import { Container } from "@/components/Container/Container";
 import styles from "./Footer.module.css";
 
 const navLinks = [
-  { label: "Quienes Somos", href: "#quienes-somos" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Equipo", href: "#equipo" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Quienes Somos", href: "/#quienes-somos" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Equipo", href: "/#equipo" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
       <Container>
+        <div className={styles.ctaBanner}>
+          <div className={styles.ctaContent}>
+            <h2 className={styles.ctaHeading}>
+              Tu recuperacion empieza aqui
+            </h2>
+            <p className={styles.ctaText}>
+              Cuidamos de ti con un enfoque personalizado y profesional
+            </p>
+          </div>
+          <a href="/#contacto" className={styles.ctaButton}>
+            Pide tu cita
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+
         <div className={styles.grid}>
           <div className={styles.brand}>
             <span className={styles.logo}>Multifido</span>
@@ -32,16 +52,16 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-
-            <h3 className={styles.columnTitle} style={{ marginTop: "var(--space-5)" }}>
-              Horario
-            </h3>
-            <p className={styles.hours}>Lun&ndash;Vie: 10:00&ndash;14:00 y 16:00&ndash;20:00</p>
-            <p className={styles.hours}>Sab: 09:00&ndash;13:00</p>
           </div>
 
           <div className={styles.column}>
-            <h3 className={styles.columnTitle}>Contacto</h3>
+            <h3 className={styles.columnTitle}>Horario</h3>
+            <p className={styles.hours}>Lun&ndash;Vie: 10:00&ndash;14:00 y 16:00&ndash;20:00</p>
+            <p className={styles.hours}>Sab: 09:00&ndash;13:00</p>
+
+            <h3 className={styles.columnTitle} style={{ marginTop: "var(--space-6)" }}>
+              Contacto
+            </h3>
             <ul className={styles.linkList}>
               <li>
                 <a href="tel:604940941" className={styles.link}>
@@ -53,13 +73,14 @@ export function Footer() {
                   multifidofyr@gmail.com
                 </a>
               </li>
-              <li>
-                <span className={styles.address}>
-                  Calle Valdemoro 11, 28914 Leganes, Madrid
-                </span>
-              </li>
             </ul>
+          </div>
 
+          <div className={styles.column}>
+            <h3 className={styles.columnTitle}>Encuentranos</h3>
+            <span className={styles.address}>
+              Calle Valdemoro 11, 28914 Leganes, Madrid
+            </span>
             <div className={styles.social}>
               <a
                 href="https://www.instagram.com/multifido_fyr/"
@@ -94,8 +115,9 @@ export function Footer() {
             &copy; 2026 Multifido Fisioterapia &amp; Readaptacion. Todos los derechos reservados.
           </p>
           <div className={styles.legal}>
-            <a href="#" className={styles.legalLink}>Politica de Privacidad</a>
-            <a href="#" className={styles.legalLink}>Aviso Legal</a>
+            <Link href="/politica-de-privacidad" className={styles.legalLink}>Politica de Privacidad</Link>
+            <Link href="/politica-de-cookies" className={styles.legalLink}>Politica de Cookies</Link>
+            <Link href="/aviso-legal" className={styles.legalLink}>Aviso Legal</Link>
           </div>
         </div>
       </Container>

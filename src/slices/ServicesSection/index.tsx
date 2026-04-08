@@ -1,7 +1,10 @@
+"use client";
+
 import { type FC } from "react";
 import { type Content } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
 import { SectionWrapper } from "@/components/SectionWrapper/SectionWrapper";
+import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import styles from "./index.module.css";
 
 const serviceIcons = [
@@ -17,9 +20,14 @@ const serviceIcons = [
 type ServicesSectionProps = SliceComponentProps<Content.ServicesSectionSlice>;
 
 const ServicesSection: FC<ServicesSectionProps> = ({ slice }) => {
+  const headerRef = useScrollReveal<HTMLDivElement>();
+  const gridRef = useStaggerReveal<HTMLDivElement>(slice.items.length, {
+    staggerDelay: 80,
+  });
+
   return (
     <SectionWrapper id={slice.primary.section_id || "servicios"}>
-      <div className={styles.header}>
+      <div className={styles.header} ref={headerRef}>
         <span className={styles.eyebrow}>Que Ofrecemos</span>
         <div className={styles.heading}>
           <PrismicRichText field={slice.primary.heading} />
@@ -31,7 +39,7 @@ const ServicesSection: FC<ServicesSectionProps> = ({ slice }) => {
         )}
       </div>
 
-      <div className={styles.grid}>
+      <div className={styles.grid} ref={gridRef}>
         {slice.items.map((item, i) => (
           <div key={i} className={styles.card}>
             <div className={styles.icon}>{serviceIcons[i] || serviceIcons[0]}</div>
@@ -39,9 +47,6 @@ const ServicesSection: FC<ServicesSectionProps> = ({ slice }) => {
             <div className={styles.serviceDescription}>
               <PrismicRichText field={item.service_description} />
             </div>
-            <span className={styles.viewMore} aria-hidden="true">
-              Ver mas&ensp;&rarr;
-            </span>
           </div>
         ))}
       </div>

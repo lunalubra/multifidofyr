@@ -5,12 +5,17 @@ import { type Content } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
 import Image from "next/image";
 import { Container } from "@/components/Container/Container";
+import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import styles from "./index.module.css";
 
 type ClinicGalleryProps = SliceComponentProps<Content.ClinicGallerySlice>;
 
 const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const headerRef = useScrollReveal<HTMLDivElement>();
+  const gridRef = useStaggerReveal<HTMLDivElement>(slice.items.length, {
+    staggerDelay: 60,
+  });
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -52,14 +57,14 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
       className={styles.section}
     >
       <Container>
-        <div className={styles.header}>
+        <div className={styles.header} ref={headerRef}>
           <span className={styles.eyebrow}>Instalaciones</span>
           <div className={styles.heading}>
             <PrismicRichText field={slice.primary.heading} />
           </div>
         </div>
 
-        <div className={styles.grid}>
+        <div className={styles.grid} ref={gridRef}>
           {slice.items.map((item, i) => (
             <button
               key={i}
@@ -74,7 +79,7 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
                 height={450}
                 className={styles.image}
                 loading="lazy"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
               />
             </button>
           ))}
@@ -87,6 +92,7 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
           onClick={() => setSelectedIndex(null)}
           role="dialog"
           aria-label="Galeria de imagenes"
+          aria-modal="true"
         >
           <button
             className={styles.lightboxClose}
