@@ -3,9 +3,9 @@ import { createClient } from "@/prismicio";
 import { BlogListing } from "./BlogListing";
 
 export const metadata: Metadata = {
-  title: "Blog | Multifido Fisioterapia & Readaptacion",
+  title: "Blog | Multífido Fisioterapia & Readaptación",
   description:
-    "Articulos sobre fisioterapia, readaptacion deportiva, bienestar y prevencion de lesiones. Consejos de nuestros especialistas.",
+    "Artículos sobre fisioterapia, readaptación deportiva, bienestar y prevención de lesiones. Consejos de nuestros especialistas.",
 };
 
 export default async function BlogPage() {

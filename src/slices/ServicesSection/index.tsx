@@ -28,7 +28,7 @@ const ServicesSection: FC<ServicesSectionProps> = ({ slice }) => {
   return (
     <SectionWrapper id={slice.primary.section_id || "servicios"}>
       <div className={styles.header} ref={headerRef}>
-        <span className={styles.eyebrow}>Que Ofrecemos</span>
+        <span className={styles.eyebrow}>Qué Ofrecemos</span>
         <div className={styles.heading}>
           <PrismicRichText field={slice.primary.heading} />
         </div>

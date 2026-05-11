@@ -33,7 +33,7 @@ export async function generateMetadata({
   const post = await getPost(uid);
 
   return {
-    title: `${asText(post.data.title)} | Blog Multifido`,
+    title: `${asText(post.data.title)} | Blog Multífido`,
     description: post.data.excerpt || post.data.meta_description,
     openGraph: {
       title: post.data.meta_title || asText(post.data.title),

@@ -138,6 +138,7 @@ export interface TeamSectionSliceDefaultItem {
   role: prismic.KeyTextField;
   credentials: prismic.KeyTextField;
   bio: prismic.RichTextField;
+  photo_url: prismic.KeyTextField;
 }
 
 export type TeamSectionSliceDefault = prismic.SharedSliceVariation<

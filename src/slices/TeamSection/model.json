@@ -40,6 +40,13 @@
             "placeholder": "Especialidades...",
             "multi": "paragraph,strong,em,list-item"
           }
+        },
+        "photo_url": {
+          "type": "Text",
+          "config": {
+            "label": "Ruta de retrato",
+            "placeholder": "/images/team/alicia.jpg"
+          }
         }
       }
     }

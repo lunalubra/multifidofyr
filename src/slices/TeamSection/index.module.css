@@ -82,8 +82,8 @@
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 150px;
   border-radius: var(--radius-lg);
   background: linear-gradient(
     135deg,
@@ -100,6 +100,24 @@
   letter-spacing: var(--heading-letter-spacing);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: background var(--duration-slow) var(--ease-out);
+}
+
+.portrait {
+  width: 120px;
+  height: 150px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    box-shadow var(--duration-slow) var(--ease-out);
+}
+
+.card:hover .portrait {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
 }
 
 .card:hover .avatar {

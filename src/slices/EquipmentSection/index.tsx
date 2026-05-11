@@ -19,7 +19,7 @@ const EquipmentSection: FC<EquipmentSectionProps> = ({ slice }) => {
   return (
     <SectionWrapper id={slice.primary.section_id || "tecnologia"} elevated>
       <div className={styles.header} ref={headerRef}>
-        <span className={styles.eyebrow}>Tecnologia</span>
+        <span className={styles.eyebrow}>Tecnología</span>
         <div className={styles.heading}>
           <PrismicRichText field={slice.primary.heading} />
         </div>
@@ -31,32 +31,44 @@ const EquipmentSection: FC<EquipmentSectionProps> = ({ slice }) => {
       </div>
 
       <div className={styles.list} ref={listRef}>
-        {slice.items.map((item, i) => (
-          <div key={i} className={styles.card} data-reverse={i % 2 === 1 ? "" : undefined}>
-            {item.equipment_image_url && (
-              <div className={styles.imageWrapper}>
-                <Image
-                  src={item.equipment_image_url}
-                  alt={item.equipment_name || "Equipamiento clinico"}
-                  width={600}
-                  height={400}
-                  className={styles.image}
-                  loading="lazy"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            )}
-            <div className={styles.content}>
-              <span className={styles.number} aria-hidden="true">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className={styles.equipmentName}>{item.equipment_name}</h3>
-              <div className={styles.equipmentDescription}>
-                <PrismicRichText field={item.equipment_description} />
+        {slice.items.map((item, i) => {
+          const hasImage = Boolean(item.equipment_image_url);
+          return (
+            <div
+              key={i}
+              className={styles.card}
+              data-reverse={hasImage && i % 2 === 1 ? "" : undefined}
+              data-no-image={!hasImage ? "" : undefined}
+            >
+              {hasImage ? (
+                <div className={styles.imageWrapper}>
+                  <Image
+                    src={item.equipment_image_url as string}
+                    alt={item.equipment_name || "Equipamiento clínico"}
+                    width={600}
+                    height={400}
+                    className={styles.image}
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              ) : (
+                <div className={styles.imagePlaceholder} aria-hidden="true">
+                  <span className={styles.placeholderLabel}>Próximamente</span>
+                </div>
+              )}
+              <div className={styles.content}>
+                <span className={styles.number} aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className={styles.equipmentName}>{item.equipment_name}</h3>
+                <div className={styles.equipmentDescription}>
+                  <PrismicRichText field={item.equipment_description} />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </SectionWrapper>
   );

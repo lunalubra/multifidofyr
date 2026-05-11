@@ -50,12 +50,12 @@ export function BlogListing({ posts }: BlogListingProps) {
           <div className={styles.pageHeader} ref={headerRef}>
             <h1 className={styles.pageTitle}>Blog</h1>
             <p className={styles.pageSubtitle}>
-              Articulos sobre fisioterapia, readaptacion y bienestar
+              Artículos sobre fisioterapia, readaptación y bienestar
             </p>
             <div className={styles.accentLine} />
           </div>
           <div className={styles.emptyState}>
-            <p>Proximamente publicaremos nuevos articulos.</p>
+            <p>Próximamente publicaremos nuevos artículos.</p>
           </div>
         </Container>
       </section>
@@ -70,7 +70,7 @@ export function BlogListing({ posts }: BlogListingProps) {
         <div className={styles.pageHeader} ref={headerRef}>
           <h1 className={styles.pageTitle}>Blog</h1>
           <p className={styles.pageSubtitle}>
-            Articulos sobre fisioterapia, readaptacion y bienestar
+            Artículos sobre fisioterapia, readaptación y bienestar
           </p>
           <div className={styles.accentLine} />
         </div>
@@ -118,7 +118,7 @@ export function BlogListing({ posts }: BlogListingProps) {
         {rest.length > 0 && (
           <>
             <div className={styles.gridHeader} ref={gridHeaderRef}>
-              <span className={styles.gridLabel}>Todos los articulos</span>
+              <span className={styles.gridLabel}>Todos los artículos</span>
               <div className={styles.gridLine} />
             </div>
 

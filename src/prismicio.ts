@@ -30,10 +30,7 @@ const routes: Route[] = [
 export function createClient(config: ClientConfig = {}) {
   const client = baseCreateClient(sm.apiEndpoint || repositoryName, {
     routes,
-    fetchOptions:
-      process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-        : { next: { revalidate: 5 } },
+    fetchOptions: { next: { revalidate: 5 } },
     ...config
   });
 

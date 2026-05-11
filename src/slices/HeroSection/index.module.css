@@ -61,22 +61,25 @@
   max-width: 1000px;
 }
 
-.badge {
+.logoMark {
   display: inline-flex;
   align-items: center;
-  padding: var(--space-2) var(--space-5);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-pill);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  justify-content: center;
+  padding: var(--space-4) var(--space-6);
+  background: rgba(250, 248, 243, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
   margin-bottom: var(--space-7);
   animation: fadeInUp var(--duration-entrance) var(--ease-out-expo) 100ms both;
+}
+
+.logoImage {
+  display: block;
+  width: clamp(220px, 32vw, 360px);
+  height: auto;
 }
 
 .heading h1 {
@@ -233,7 +236,12 @@
     font-size: var(--text-sm);
   }
 
-  .badge {
+  .logoMark {
+    padding: var(--space-3) var(--space-5);
     margin-bottom: var(--space-6);
+  }
+
+  .logoImage {
+    width: clamp(180px, 56vw, 260px);
   }
 }

@@ -23,7 +23,7 @@ const VideoSection: FC<VideoSectionProps> = ({ slice }) => {
     >
       <Container>
         <div className={styles.header} ref={headerRef}>
-          <span className={styles.eyebrow}>Conocenos</span>
+          <span className={styles.eyebrow}>Conócenos</span>
           <div className={styles.heading}>
             <PrismicRichText field={slice.primary.heading} />
           </div>
@@ -46,7 +46,7 @@ const VideoSection: FC<VideoSectionProps> = ({ slice }) => {
                   poster="/images/clinic/recepcion-bienvenida.jpg"
                 >
                   <source src={item.video_url || ""} type="video/mp4" />
-                  Tu navegador no soporta la reproduccion de video.
+                  Tu navegador no soporta la reproducción de vídeo.
                 </video>
               </div>
               {item.video_title && (

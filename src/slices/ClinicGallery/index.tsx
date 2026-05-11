@@ -74,7 +74,7 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
             >
               <Image
                 src={item.image_url || "/images/clinic/recepcion-arte.jpg"}
-                alt={item.alt_text || "Instalaciones de Multifido"}
+                alt={item.alt_text || "Instalaciones de Multífido"}
                 width={600}
                 height={450}
                 className={styles.image}
@@ -91,13 +91,13 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
           className={styles.lightbox}
           onClick={() => setSelectedIndex(null)}
           role="dialog"
-          aria-label="Galeria de imagenes"
+          aria-label="Galería de imágenes"
           aria-modal="true"
         >
           <button
             className={styles.lightboxClose}
             onClick={() => setSelectedIndex(null)}
-            aria-label="Cerrar galeria"
+            aria-label="Cerrar galería"
           >
             <svg
               width="24"
@@ -146,7 +146,7 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
               src={
                 selectedItem.image_url || "/images/clinic/recepcion-arte.jpg"
               }
-              alt={selectedItem.alt_text || "Instalaciones de Multifido"}
+              alt={selectedItem.alt_text || "Instalaciones de Multífido"}
               width={1200}
               height={900}
               className={styles.lightboxImage}

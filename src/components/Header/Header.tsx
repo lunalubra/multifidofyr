@@ -6,7 +6,7 @@ import { Container } from "@/components/Container/Container";
 import styles from "./Header.module.css";
 
 const navLinks = [
-  { label: "Quienes Somos", href: "/#quienes-somos" },
+  { label: "Quiénes Somos", href: "/#quienes-somos" },
   { label: "Equipo", href: "/#equipo" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Blog", href: "/blog" },
@@ -41,9 +41,9 @@ export function Header() {
       className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}
     >
       <Container>
-        <nav className={styles.nav} aria-label="Navegacion principal">
+        <nav className={styles.nav} aria-label="Navegación principal">
           <Link href="/" className={styles.logo}>
-            Multifido
+            Multífido
           </Link>
 
           <ul className={styles.navLinks}>
@@ -57,13 +57,13 @@ export function Header() {
           </ul>
 
           <a href="/#contacto" className={styles.cta}>
-            Visitanos
+            Visítanos
           </a>
 
           <button
             className={styles.hamburger}
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Cerrar menu" : "Abrir menu de navegacion"}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú de navegación"}
             aria-expanded={menuOpen}
           >
             <span className={`${styles.hamburgerLine} ${menuOpen ? styles.open : ""}`} />
@@ -74,7 +74,7 @@ export function Header() {
       </Container>
 
       {menuOpen && (
-        <div className={styles.mobileMenu} role="dialog" aria-label="Menu de navegacion">
+        <div className={styles.mobileMenu} role="dialog" aria-label="Menú de navegación">
           <nav>
             <ul className={styles.mobileNavLinks}>
               {navLinks.map((link) => (
@@ -94,7 +94,7 @@ export function Header() {
                   className={styles.mobileCta}
                   onClick={closeMenu}
                 >
-                  Visitanos
+                  Visítanos
                 </a>
               </li>
             </ul>

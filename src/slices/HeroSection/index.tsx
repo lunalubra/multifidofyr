@@ -33,7 +33,7 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
       <div className={styles.imageContainer} ref={imageRef}>
         <Image
           src={bgUrl}
-          alt="Clinica Multifido Fisioterapia"
+          alt="Clínica Multífido Fisioterapia"
           fill
           priority
           sizes="100vw"
@@ -43,7 +43,16 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
       </div>
 
       <div className={styles.content}>
-        <span className={styles.badge}>Fisioterapia &amp; Readaptacion</span>
+        <div className={styles.logoMark}>
+          <Image
+            src="/images/multifidofyr-logo.png"
+            alt="Multífido Fisioterapia & Readaptación"
+            width={520}
+            height={120}
+            priority
+            className={styles.logoImage}
+          />
+        </div>
         <div className={styles.heading}>
           <PrismicRichText field={slice.primary.heading} />
         </div>
@@ -62,7 +71,7 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
             </a>
           )}
           <a href="#quienes-somos" className={styles.ctaSecondary}>
-            Conocenos
+            Conócenos
           </a>
         </div>
       </div>

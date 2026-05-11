@@ -20,7 +20,7 @@ const ContactSection: FC<ContactSectionProps> = ({ slice }) => {
     const data = new FormData(form);
     const subject = encodeURIComponent("Consulta desde la web");
     const body = encodeURIComponent(
-      `Nombre: ${data.get("name")}\nTelefono: ${data.get("phone")}\nEmail: ${data.get("email")}\n\nMensaje:\n${data.get("message")}`
+      `Nombre: ${data.get("name")}\nTeléfono: ${data.get("phone")}\nEmail: ${data.get("email")}\n\nMensaje:\n${data.get("message")}`
     );
     window.location.href = `mailto:${slice.primary.email || "multifidofyr@gmail.com"}?subject=${subject}&body=${body}`;
     setSubmitted(true);
@@ -48,7 +48,7 @@ const ContactSection: FC<ContactSectionProps> = ({ slice }) => {
               autoComplete="name"
               required
               className={styles.input}
-              placeholder="Maria Garcia Lopez..."
+              placeholder="María García López..."
             />
           </div>
 
@@ -70,7 +70,7 @@ const ContactSection: FC<ContactSectionProps> = ({ slice }) => {
 
           <div className={styles.fieldGroup}>
             <label htmlFor="contact-phone" className={styles.label}>
-              Telefono <span style={{ color: "var(--text-muted)", fontWeight: 400 }}>(opcional)</span>
+              Teléfono <span style={{ color: "var(--text-muted)", fontWeight: 400 }}>(opcional)</span>
             </label>
             <input
               id="contact-phone"
@@ -92,7 +92,7 @@ const ContactSection: FC<ContactSectionProps> = ({ slice }) => {
               name="message"
               required
               className={styles.textarea}
-              placeholder="Cuentanos en que podemos ayudarte..."
+              placeholder="Cuéntanos en qué podemos ayudarte..."
               rows={5}
             />
           </div>
@@ -119,21 +119,21 @@ const ContactSection: FC<ContactSectionProps> = ({ slice }) => {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Ubicacion de Multifido Fisioterapia en Google Maps"
+            title="Ubicación de Multífido Fisioterapia en Google Maps"
           />
         </div>
 
         {/* Info panel — dark bg */}
         <div className={styles.info}>
           <div className={styles.infoBlock}>
-            <h3 className={styles.infoTitle}>Direccion</h3>
+            <h3 className={styles.infoTitle}>Dirección</h3>
             <div className={styles.infoText}>
               <PrismicRichText field={slice.primary.address} />
             </div>
           </div>
 
           <div className={styles.infoBlock}>
-            <h3 className={styles.infoTitle}>Telefono</h3>
+            <h3 className={styles.infoTitle}>Teléfono</h3>
             <a
               href={`tel:${slice.primary.phone}`}
               className={styles.infoLink}
@@ -170,7 +170,7 @@ const ContactSection: FC<ContactSectionProps> = ({ slice }) => {
           )}
 
           <a
-            href="https://maps.google.com/?q=Calle+Valdemoro+11,+28914+Leganes"
+            href="https://maps.google.com/?q=Calle+Valdemoro+11,+28914+Legan%C3%A9s"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.directionsButton}
@@ -178,7 +178,7 @@ const ContactSection: FC<ContactSectionProps> = ({ slice }) => {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <polygon points="3 11 22 2 13 21 11 13 3 11" />
             </svg>
-            Como llegar
+            Cómo llegar
           </a>
         </div>
       </div>
