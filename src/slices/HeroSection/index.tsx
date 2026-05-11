@@ -43,16 +43,7 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.logoMark}>
-          <Image
-            src="/images/multifidofyr-logo.png"
-            alt="Multífido Fisioterapia & Readaptación"
-            width={520}
-            height={120}
-            priority
-            className={styles.logoImage}
-          />
-        </div>
+        <span className={styles.badge}>Fisioterapia &amp; Readaptación</span>
         <div className={styles.heading}>
           <PrismicRichText field={slice.primary.heading} />
         </div>

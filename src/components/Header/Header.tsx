@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/Container/Container";
 import styles from "./Header.module.css";
 
@@ -42,8 +43,15 @@ export function Header() {
     >
       <Container>
         <nav className={styles.nav} aria-label="Navegación principal">
-          <Link href="/" className={styles.logo}>
-            Multífido
+          <Link href="/" className={styles.logo} aria-label="Multífido — Inicio">
+            <Image
+              src="/images/multifidofyr-logo.png"
+              alt="Multífido Fisioterapia & Readaptación"
+              width={520}
+              height={120}
+              priority
+              className={styles.logoImage}
+            />
           </Link>
 
           <ul className={styles.navLinks}>
