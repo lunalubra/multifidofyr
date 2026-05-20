@@ -83,7 +83,7 @@ export function Footer() {
             </span>
             <div className={styles.social}>
               <a
-                href="https://www.instagram.com/multifido_fyr/"
+                href="https://www.instagram.com/multifidofyr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}

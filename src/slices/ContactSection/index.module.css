@@ -18,108 +18,27 @@
   box-shadow: var(--shadow-xl);
 }
 
-/* Form panel — white */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
+/* Booking panel — Doctoralia widget */
+.bookingPanel {
   background: var(--bg-card);
-  padding: var(--space-7);
+  padding: var(--space-5);
   min-width: 0;
-  overflow: hidden;
-}
-
-.fieldGroup {
+  overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  flex: 1;
 }
 
-.fieldRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3);
-}
-
-.label {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--text-secondary);
-}
-
-.input,
-.textarea {
-  padding: 12px var(--space-3);
-  background: var(--bg-elevated);
-  border: 1.5px solid transparent;
-  border-radius: var(--radius-md);
-  font-family: var(--font-body);
-  font-size: 16px;
-  color: var(--text-primary);
-  min-width: 0;
-  transition:
-    border-color var(--duration-normal) var(--ease-out),
-    box-shadow var(--duration-normal) var(--ease-out),
-    background-color var(--duration-normal) var(--ease-out);
-  -webkit-appearance: none;
-}
-
-.input::placeholder,
-.textarea::placeholder {
-  color: var(--text-muted);
-}
-
-.input:hover,
-.textarea:hover {
-  background: var(--bg-base);
-  border-color: var(--border-default);
-}
-
-.input:focus,
-.textarea:focus {
-  outline: none;
-  border-color: var(--accent-hover);
-  box-shadow: 0 0 0 3px rgba(41, 124, 59, 0.1);
-  background: white;
-}
-
-.textarea {
-  resize: vertical;
-  min-height: 130px;
-}
-
-.submit {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding: 16px var(--space-5);
-  background: var(--accent-solid);
-  color: white;
-  font-size: var(--text-base);
+.bookingPanel :global(.zl-facility-url) {
+  align-self: center;
+  color: var(--accent-solid);
+  text-decoration: none;
   font-weight: 600;
-  border-radius: var(--radius-pill);
+}
+
+.bookingPanel :global(iframe) {
   border: none;
-  cursor: pointer;
-  transition:
-    background-color var(--duration-normal) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out),
-    box-shadow var(--duration-slow) var(--ease-out);
-  touch-action: manipulation;
-  width: 100%;
-  margin-top: var(--space-2);
-}
-
-.submit:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-accent);
-}
-
-.submit:active {
-  transform: translateY(0);
-  box-shadow: none;
+  width: 100% !important;
+  min-height: 520px;
 }
 
 /* Map panel — middle */
@@ -155,7 +74,11 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(41, 124, 59, 0.08) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(41, 124, 59, 0.08) 0%,
+    transparent 70%
+  );
   bottom: -100px;
   right: -100px;
   pointer-events: none;
@@ -261,7 +184,7 @@
     grid-template-rows: auto auto;
   }
 
-  .form {
+  .bookingPanel {
     grid-column: 1 / -1;
   }
 
@@ -275,12 +198,8 @@
     grid-template-columns: 1fr;
   }
 
-  .form {
-    padding: var(--space-6);
-  }
-
-  .fieldRow {
-    grid-template-columns: 1fr;
+  .bookingPanel {
+    padding: var(--space-4);
   }
 
   .mapPanel {
