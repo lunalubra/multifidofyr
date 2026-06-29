@@ -9,12 +9,13 @@ import styles from "./index.module.css";
 type HeroSectionProps = SliceComponentProps<Content.HeroSectionSlice>;
 
 const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
-  const bgUrl = slice.primary.background_image_url || "/images/clinic/sala-ejercicio.jpg";
+  const bgUrl =
+    slice.primary.background_image_url || "/images/clinic/sala-ejercicio.jpg";
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-motion: reduce)"
     ).matches;
     if (prefersReducedMotion) return;
 
@@ -43,7 +44,6 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
       </div>
 
       <div className={styles.content}>
-        <span className={styles.badge}>Fisioterapia &amp; Readaptación</span>
         <div className={styles.heading}>
           <PrismicRichText field={slice.primary.heading} />
         </div>
@@ -55,7 +55,17 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
           {slice.primary.cta_label && (
             <a href="#contacto" className={styles.ctaPrimary}>
               {slice.primary.cta_label}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
