@@ -4,12 +4,33 @@
     "name": "Default",
     "slice_type": "video_section",
     "items": [
-      { "video_url": "/videos/sintesis-1.mp4", "video_title": "Nuestra clinica" }
+      {
+        "video_file": {
+          "link_type": "Media",
+          "id": "video-sintesis-1",
+          "name": "sintesis-1.mp4",
+          "kind": "document",
+          "url": "/videos/sintesis-1.mp4",
+          "size": "5885842",
+          "height": null,
+          "width": null
+        },
+        "video_title": "Nuestra clinica"
+      }
     ],
     "primary": {
       "section_id": "conocenos",
+      "eyebrow": "Conocenos",
       "heading": [{ "type": "heading2", "text": "Conocenos", "spans": [] }],
-      "description": [{ "type": "paragraph", "text": "Descubre nuestras instalaciones.", "spans": [] }]
+      "description": [{ "type": "paragraph", "text": "Descubre nuestras instalaciones.", "spans": [] }],
+      "poster_image": {
+        "id": "video-poster",
+        "url": "/images/clinic/recepcion-bienvenida.jpg",
+        "alt": "Area de bienvenida de la clinica",
+        "copyright": null,
+        "dimensions": { "width": 1600, "height": 1067 },
+        "edit": { "x": 0, "y": 0, "zoom": 1, "background": "transparent" }
+      }
     }
   }
 ]

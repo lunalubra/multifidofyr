@@ -15,6 +15,10 @@
           "type": "Text",
           "config": { "label": "ID de seccion", "placeholder": "conocenos" }
         },
+        "eyebrow": {
+          "type": "Text",
+          "config": { "label": "Etiqueta superior", "placeholder": "Conocenos" }
+        },
         "heading": {
           "type": "StructuredText",
           "config": { "label": "Titulo", "placeholder": "Conocenos", "single": "heading2" }
@@ -22,12 +26,16 @@
         "description": {
           "type": "StructuredText",
           "config": { "label": "Descripcion", "placeholder": "Descubre...", "multi": "paragraph,strong,em" }
+        },
+        "poster_image": {
+          "type": "Image",
+          "config": { "label": "Imagen de portada del video", "constraint": {}, "thumbnails": [] }
         }
       },
       "items": {
-        "video_url": {
-          "type": "Text",
-          "config": { "label": "Ruta de video", "placeholder": "/videos/sintesis-1.mp4" }
+        "video_file": {
+          "type": "Link",
+          "config": { "label": "Archivo de video", "select": "media" }
         },
         "video_title": {
           "type": "Text",

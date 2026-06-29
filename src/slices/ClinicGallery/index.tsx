@@ -1,19 +1,30 @@
 "use client";
 
 import { type FC, useState, useEffect, useCallback } from "react";
-import { type Content } from "@prismicio/client";
+import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
-import Image from "next/image";
+import { PrismicNextImage } from "@prismicio/next";
 import { Container } from "@/components/Container/Container";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import styles from "./index.module.css";
 
-type ClinicGalleryProps = SliceComponentProps<Content.ClinicGallerySlice>;
+/**
+ * The gallery images live in a separate `gallery` singleton document (so the
+ * home page document stays under Prismic's per-document asset limit). The page
+ * route fetches that document and passes it to slices via SliceZone context.
+ */
+export type GalleryContext = { gallery: Content.GalleryDocument | null };
 
-const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
+type ClinicGalleryProps = SliceComponentProps<
+  Content.ClinicGallerySlice,
+  GalleryContext
+>;
+
+const ClinicGallery: FC<ClinicGalleryProps> = ({ slice, context }) => {
+  const items = context.gallery?.data.images ?? [];
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const headerRef = useScrollReveal<HTMLDivElement>();
-  const gridRef = useStaggerReveal<HTMLDivElement>(slice.items.length, {
+  const gridRef = useStaggerReveal<HTMLDivElement>(items.length, {
     staggerDelay: 60,
   });
 
@@ -23,16 +34,14 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
       if (e.key === "Escape") setSelectedIndex(null);
       if (e.key === "ArrowRight")
         setSelectedIndex((prev) =>
-          prev !== null ? (prev + 1) % slice.items.length : null
+          prev !== null ? (prev + 1) % items.length : null
         );
       if (e.key === "ArrowLeft")
         setSelectedIndex((prev) =>
-          prev !== null
-            ? (prev - 1 + slice.items.length) % slice.items.length
-            : null
+          prev !== null ? (prev - 1 + items.length) % items.length : null
         );
     },
-    [selectedIndex, slice.items.length]
+    [selectedIndex, items.length]
   );
 
   useEffect(() => {
@@ -48,8 +57,9 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
     };
   }, [selectedIndex, handleKeyDown]);
 
-  const selectedItem =
-    selectedIndex !== null ? slice.items[selectedIndex] : null;
+  const selectedItem = selectedIndex !== null ? items[selectedIndex] : null;
+
+  if (items.length === 0) return null;
 
   return (
     <section
@@ -58,31 +68,37 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
     >
       <Container>
         <div className={styles.header} ref={headerRef}>
-          <span className={styles.eyebrow}>Instalaciones</span>
+          <span className={styles.eyebrow}>
+            {slice.primary.eyebrow || "Instalaciones"}
+          </span>
           <div className={styles.heading}>
             <PrismicRichText field={slice.primary.heading} />
           </div>
         </div>
 
         <div className={styles.grid} ref={gridRef}>
-          {slice.items.map((item, i) => (
-            <button
-              key={i}
-              className={styles.imageButton}
-              onClick={() => setSelectedIndex(i)}
-              aria-label={`Ver ${item.alt_text || "imagen"} en pantalla completa`}
-            >
-              <Image
-                src={item.image_url || "/images/clinic/recepcion-arte.jpg"}
-                alt={item.alt_text || "Instalaciones de Multífido"}
-                width={600}
-                height={450}
-                className={styles.image}
-                loading="lazy"
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-              />
-            </button>
-          ))}
+          {items.map((item, i) => {
+            const alt =
+              (isFilled.image(item.image) && item.image.alt) || "imagen";
+            return (
+              <button
+                key={i}
+                className={styles.imageButton}
+                onClick={() => setSelectedIndex(i)}
+                aria-label={`Ver ${alt} en pantalla completa`}
+              >
+                <PrismicNextImage
+                  field={item.image}
+                  width={600}
+                  height={450}
+                  className={styles.image}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                  fallbackAlt=""
+                />
+              </button>
+            );
+          })}
         </div>
       </Container>
 
@@ -119,7 +135,7 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
             onClick={(e) => {
               e.stopPropagation();
               setSelectedIndex(
-                (selectedIndex - 1 + slice.items.length) % slice.items.length
+                (selectedIndex - 1 + items.length) % items.length
               );
             }}
             aria-label="Imagen anterior"
@@ -142,16 +158,14 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
             className={styles.lightboxImageWrapper}
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={
-                selectedItem.image_url || "/images/clinic/recepcion-arte.jpg"
-              }
-              alt={selectedItem.alt_text || "Instalaciones de Multífido"}
+            <PrismicNextImage
+              field={selectedItem.image}
               width={1200}
               height={900}
               className={styles.lightboxImage}
               sizes="90vw"
               priority
+              fallbackAlt=""
             />
           </div>
 
@@ -160,7 +174,7 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
             onClick={(e) => {
               e.stopPropagation();
               setSelectedIndex(
-                (selectedIndex + 1) % slice.items.length
+                (selectedIndex + 1) % items.length
               );
             }}
             aria-label="Imagen siguiente"
@@ -180,7 +194,7 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice }) => {
           </button>
 
           <div className={styles.lightboxCounter}>
-            {selectedIndex + 1} / {slice.items.length}
+            {selectedIndex + 1} / {items.length}
           </div>
         </div>
       )}

@@ -1,16 +1,15 @@
 "use client";
 
 import { type FC, useEffect, useRef } from "react";
-import { type Content } from "@prismicio/client";
+import { type Content, asLink, isFilled } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 import Image from "next/image";
 import styles from "./index.module.css";
 
 type HeroSectionProps = SliceComponentProps<Content.HeroSectionSlice>;
 
 const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
-  const bgUrl =
-    slice.primary.background_image_url || "/images/clinic/sala-ejercicio.jpg";
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,14 +31,25 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
   return (
     <section className={styles.hero} data-slice-type={slice.slice_type}>
       <div className={styles.imageContainer} ref={imageRef}>
-        <Image
-          src={bgUrl}
-          alt="Clínica Multífido Fisioterapia"
-          fill
-          priority
-          sizes="100vw"
-          className={styles.bgImage}
-        />
+        {isFilled.image(slice.primary.background_image) ? (
+          <PrismicNextImage
+            field={slice.primary.background_image}
+            fill
+            priority
+            sizes="100vw"
+            className={styles.bgImage}
+            fallbackAlt=""
+          />
+        ) : (
+          <Image
+            src="/images/clinic/sala-ejercicio.jpg"
+            alt="Clínica Multífido Fisioterapia"
+            fill
+            priority
+            sizes="100vw"
+            className={styles.bgImage}
+          />
+        )}
         <div className={styles.overlay} />
       </div>
 
@@ -53,7 +63,10 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
         </div>
         <div className={styles.actions}>
           {slice.primary.cta_label && (
-            <a href="#contacto" className={styles.ctaPrimary}>
+            <a
+              href={asLink(slice.primary.cta_link) || "#contacto"}
+              className={styles.ctaPrimary}
+            >
               {slice.primary.cta_label}
               <svg
                 width="16"
@@ -71,8 +84,11 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
               </svg>
             </a>
           )}
-          <a href="#quienes-somos" className={styles.ctaSecondary}>
-            Conócenos
+          <a
+            href={asLink(slice.primary.cta_secondary_link) || "#quienes-somos"}
+            className={styles.ctaSecondary}
+          >
+            {slice.primary.cta_secondary_label || "Conócenos"}
           </a>
         </div>
       </div>

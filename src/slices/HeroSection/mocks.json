@@ -13,7 +13,16 @@
       ],
       "cta_label": "Reserva tu Cita",
       "cta_link": { "link_type": "Web", "url": "#contacto" },
-      "background_image_url": "/images/clinic/sala-ejercicio.jpg"
+      "cta_secondary_label": "Conocenos",
+      "cta_secondary_link": { "link_type": "Web", "url": "#quienes-somos" },
+      "background_image": {
+        "id": "hero-bg",
+        "url": "/images/clinic/sala-ejercicio.jpg",
+        "alt": "Sala de ejercicio de la clinica Multifido",
+        "copyright": null,
+        "dimensions": { "width": 1600, "height": 1067 },
+        "edit": { "x": 0, "y": 0, "zoom": 1, "background": "transparent" }
+      }
     }
   }
 ]

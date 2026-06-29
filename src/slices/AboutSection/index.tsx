@@ -28,7 +28,9 @@ const AboutSection: FC<AboutSectionProps> = ({ slice }) => {
       elevated
     >
         <div className={styles.header} ref={headerRef}>
-          <span className={styles.eyebrow}>Sobre Nosotros</span>
+          <span className={styles.eyebrow}>
+            {slice.primary.eyebrow || "Sobre Nosotros"}
+          </span>
           <div className={styles.heading}>
             <PrismicRichText field={slice.primary.heading} />
           </div>

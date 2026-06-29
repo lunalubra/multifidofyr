@@ -8,10 +8,23 @@ import { components } from "@/slices";
 
 export default async function Home() {
   const client = createClient();
-  const home = await client.getByUID("page", "home");
+  // The clinic gallery images live in their own `gallery` singleton document
+  // (keeps the home document under Prismic's per-document asset limit). It is
+  // passed to slices via SliceZone context. `.catch` keeps the build working if
+  // the document has not been created yet.
+  const [home, gallery] = await Promise.all([
+    client.getByUID("page", "home"),
+    client.getSingle("gallery").catch(() => null),
+  ]);
 
   // <SliceZone> renders the page's slices.
-  return <SliceZone slices={home.data.slices} components={components} />;
+  return (
+    <SliceZone
+      slices={home.data.slices}
+      components={components}
+      context={{ gallery }}
+    />
+  );
 }
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -15,6 +15,7 @@
     ],
     "primary": {
       "section_id": "quienes-somos",
+      "eyebrow": "Sobre Nosotros",
       "heading": [{ "type": "heading2", "text": "Quienes Somos", "spans": [] }],
       "description": [{ "type": "paragraph", "text": "Clinica de fisioterapia en Leganes.", "spans": [] }]
     }

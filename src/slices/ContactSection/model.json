@@ -19,17 +19,49 @@
           "type": "StructuredText",
           "config": { "label": "Titulo", "placeholder": "Contacto", "single": "heading2" }
         },
+        "booking_label": {
+          "type": "Text",
+          "config": { "label": "Texto del widget de reserva", "placeholder": "Reserve una cita" }
+        },
+        "doctoralia_widget_url": {
+          "type": "Text",
+          "config": { "label": "URL del widget Doctoralia", "placeholder": "https://www.doctoralia.es/clinicas/..." }
+        },
+        "doctoralia_facility": {
+          "type": "Text",
+          "config": { "label": "Identificador (slug) de Doctoralia", "placeholder": "multifido-fisioterapia-y-readaptacion" }
+        },
+        "map_embed_url": {
+          "type": "Text",
+          "config": { "label": "URL de embed de Google Maps", "placeholder": "https://www.google.com/maps/embed?pb=..." }
+        },
+        "label_address": {
+          "type": "Text",
+          "config": { "label": "Etiqueta: Direccion", "placeholder": "Direccion" }
+        },
         "address": {
           "type": "StructuredText",
           "config": { "label": "Direccion", "placeholder": "Calle Valdemoro 11...", "multi": "paragraph" }
+        },
+        "label_phone": {
+          "type": "Text",
+          "config": { "label": "Etiqueta: Telefono", "placeholder": "Telefono" }
+        },
+        "phone": {
+          "type": "Text",
+          "config": { "label": "Telefono", "placeholder": "604940941" }
+        },
+        "label_email": {
+          "type": "Text",
+          "config": { "label": "Etiqueta: Email", "placeholder": "Email" }
         },
         "email": {
           "type": "Text",
           "config": { "label": "Email", "placeholder": "multifidofyr@gmail.com" }
         },
-        "phone": {
+        "label_hours": {
           "type": "Text",
-          "config": { "label": "Telefono", "placeholder": "604940941" }
+          "config": { "label": "Etiqueta: Horario", "placeholder": "Horario" }
         },
         "hours_weekday": {
           "type": "Text",
@@ -42,6 +74,18 @@
         "doctoralia_link": {
           "type": "Link",
           "config": { "label": "Enlace Doctoralia" }
+        },
+        "doctoralia_label": {
+          "type": "Text",
+          "config": { "label": "Texto del boton Doctoralia", "placeholder": "Reservar en Doctoralia" }
+        },
+        "directions_link": {
+          "type": "Link",
+          "config": { "label": "Enlace 'Como llegar'" }
+        },
+        "directions_label": {
+          "type": "Text",
+          "config": { "label": "Texto del boton 'Como llegar'", "placeholder": "Como llegar" }
         }
       },
       "items": {}

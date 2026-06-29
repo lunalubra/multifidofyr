@@ -18,6 +18,13 @@
             "placeholder": "quienes-somos"
           }
         },
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Etiqueta superior",
+            "placeholder": "Sobre Nosotros"
+          }
+        },
         "heading": {
           "type": "StructuredText",
           "config": {

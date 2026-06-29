@@ -15,6 +15,10 @@
           "type": "Text",
           "config": { "label": "ID de seccion", "placeholder": "tecnologia" }
         },
+        "eyebrow": {
+          "type": "Text",
+          "config": { "label": "Etiqueta superior", "placeholder": "Tecnologia" }
+        },
         "heading": {
           "type": "StructuredText",
           "config": { "label": "Titulo", "placeholder": "Tecnologia Avanzada", "single": "heading2" }
@@ -22,6 +26,10 @@
         "description": {
           "type": "StructuredText",
           "config": { "label": "Descripcion", "placeholder": "Contamos con...", "multi": "paragraph,strong,em" }
+        },
+        "coming_soon_label": {
+          "type": "Text",
+          "config": { "label": "Texto para equipo sin imagen", "placeholder": "Proximamente" }
         }
       },
       "items": {
@@ -33,9 +41,9 @@
           "type": "StructuredText",
           "config": { "label": "Descripcion", "placeholder": "Descripcion...", "multi": "paragraph" }
         },
-        "equipment_image_url": {
-          "type": "Text",
-          "config": { "label": "Ruta de imagen", "placeholder": "/images/equipment/ecografo.webp" }
+        "equipment_image": {
+          "type": "Image",
+          "config": { "label": "Imagen del equipo", "constraint": {}, "thumbnails": [] }
         }
       }
     }

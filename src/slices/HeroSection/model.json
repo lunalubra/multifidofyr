@@ -30,21 +30,35 @@
         "cta_label": {
           "type": "Text",
           "config": {
-            "label": "Texto del boton",
+            "label": "Texto del boton principal",
             "placeholder": "Reserva tu Cita"
           }
         },
         "cta_link": {
           "type": "Link",
           "config": {
-            "label": "Enlace del boton"
+            "label": "Enlace del boton principal"
           }
         },
-        "background_image_url": {
+        "cta_secondary_label": {
           "type": "Text",
           "config": {
-            "label": "Ruta de imagen de fondo",
-            "placeholder": "/images/clinic/sala-ejercicio.jpg"
+            "label": "Texto del boton secundario",
+            "placeholder": "Conocenos"
+          }
+        },
+        "cta_secondary_link": {
+          "type": "Link",
+          "config": {
+            "label": "Enlace del boton secundario"
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Imagen de fondo",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },

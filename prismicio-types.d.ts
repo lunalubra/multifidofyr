@@ -30,7 +30,28 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+/**
+ * Item in *Galería → Imágenes*
+ */
+export interface GalleryDocumentDataImagesItem {
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Content for Galería documents
+ */
+interface GalleryDocumentData {
+  images: prismic.GroupField<Simplify<GalleryDocumentDataImagesItem>>;
+}
+
+export type GalleryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<GalleryDocumentData>,
+    "gallery",
+    Lang
+  >;
+
+export type AllDocumentTypes = PageDocument | GalleryDocument;
 
 // --- RichText Slice ---
 
@@ -58,7 +79,9 @@ export interface HeroSectionSliceDefaultPrimary {
   tagline: prismic.RichTextField;
   cta_label: prismic.KeyTextField;
   cta_link: prismic.LinkField;
-  background_image_url: prismic.KeyTextField;
+  cta_secondary_label: prismic.KeyTextField;
+  cta_secondary_link: prismic.LinkField;
+  background_image: prismic.ImageField<never>;
 }
 
 export type HeroSectionSliceDefault = prismic.SharedSliceVariation<
@@ -78,6 +101,7 @@ export type HeroSectionSlice = prismic.SharedSlice<
 
 export interface AboutSectionSliceDefaultPrimary {
   section_id: prismic.KeyTextField;
+  eyebrow: prismic.KeyTextField;
   heading: prismic.RichTextField;
   description: prismic.RichTextField;
 }
@@ -104,6 +128,7 @@ export type AboutSectionSlice = prismic.SharedSlice<
 
 export interface ServicesSectionSliceDefaultPrimary {
   section_id: prismic.KeyTextField;
+  eyebrow: prismic.KeyTextField;
   heading: prismic.RichTextField;
   description: prismic.RichTextField;
 }
@@ -130,6 +155,7 @@ export type ServicesSectionSlice = prismic.SharedSlice<
 
 export interface TeamSectionSliceDefaultPrimary {
   section_id: prismic.KeyTextField;
+  eyebrow: prismic.KeyTextField;
   heading: prismic.RichTextField;
 }
 
@@ -138,7 +164,7 @@ export interface TeamSectionSliceDefaultItem {
   role: prismic.KeyTextField;
   credentials: prismic.KeyTextField;
   bio: prismic.RichTextField;
-  photo_url: prismic.KeyTextField;
+  photo: prismic.ImageField<never>;
 }
 
 export type TeamSectionSliceDefault = prismic.SharedSliceVariation<
@@ -158,18 +184,14 @@ export type TeamSectionSlice = prismic.SharedSlice<
 
 export interface ClinicGallerySliceDefaultPrimary {
   section_id: prismic.KeyTextField;
+  eyebrow: prismic.KeyTextField;
   heading: prismic.RichTextField;
-}
-
-export interface ClinicGallerySliceDefaultItem {
-  image_url: prismic.KeyTextField;
-  alt_text: prismic.KeyTextField;
 }
 
 export type ClinicGallerySliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<ClinicGallerySliceDefaultPrimary>,
-  Simplify<ClinicGallerySliceDefaultItem>
+  never
 >;
 
 type ClinicGallerySliceVariation = ClinicGallerySliceDefault;
@@ -183,14 +205,16 @@ export type ClinicGallerySlice = prismic.SharedSlice<
 
 export interface EquipmentSectionSliceDefaultPrimary {
   section_id: prismic.KeyTextField;
+  eyebrow: prismic.KeyTextField;
   heading: prismic.RichTextField;
   description: prismic.RichTextField;
+  coming_soon_label: prismic.KeyTextField;
 }
 
 export interface EquipmentSectionSliceDefaultItem {
   equipment_name: prismic.KeyTextField;
   equipment_description: prismic.RichTextField;
-  equipment_image_url: prismic.KeyTextField;
+  equipment_image: prismic.ImageField<never>;
 }
 
 export type EquipmentSectionSliceDefault = prismic.SharedSliceVariation<
@@ -210,12 +234,14 @@ export type EquipmentSectionSlice = prismic.SharedSlice<
 
 export interface VideoSectionSliceDefaultPrimary {
   section_id: prismic.KeyTextField;
+  eyebrow: prismic.KeyTextField;
   heading: prismic.RichTextField;
   description: prismic.RichTextField;
+  poster_image: prismic.ImageField<never>;
 }
 
 export interface VideoSectionSliceDefaultItem {
-  video_url: prismic.KeyTextField;
+  video_file: prismic.LinkToMediaField;
   video_title: prismic.KeyTextField;
 }
 
@@ -237,12 +263,23 @@ export type VideoSectionSlice = prismic.SharedSlice<
 export interface ContactSectionSliceDefaultPrimary {
   section_id: prismic.KeyTextField;
   heading: prismic.RichTextField;
+  booking_label: prismic.KeyTextField;
+  doctoralia_widget_url: prismic.KeyTextField;
+  doctoralia_facility: prismic.KeyTextField;
+  map_embed_url: prismic.KeyTextField;
+  label_address: prismic.KeyTextField;
   address: prismic.RichTextField;
-  email: prismic.KeyTextField;
+  label_phone: prismic.KeyTextField;
   phone: prismic.KeyTextField;
+  label_email: prismic.KeyTextField;
+  email: prismic.KeyTextField;
+  label_hours: prismic.KeyTextField;
   hours_weekday: prismic.KeyTextField;
   hours_saturday: prismic.KeyTextField;
   doctoralia_link: prismic.LinkField;
+  doctoralia_label: prismic.KeyTextField;
+  directions_link: prismic.LinkField;
+  directions_label: prismic.KeyTextField;
 }
 
 export type ContactSectionSliceDefault = prismic.SharedSliceVariation<
@@ -294,6 +331,9 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      GalleryDocument,
+      GalleryDocumentData,
+      GalleryDocumentDataImagesItem,
       AllDocumentTypes,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
@@ -320,7 +360,6 @@ declare module "@prismicio/client" {
       TeamSectionSliceDefault,
       ClinicGallerySlice,
       ClinicGallerySliceDefaultPrimary,
-      ClinicGallerySliceDefaultItem,
       ClinicGallerySliceVariation,
       ClinicGallerySliceDefault,
       EquipmentSectionSlice,

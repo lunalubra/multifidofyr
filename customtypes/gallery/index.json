@@ -1,0 +1,27 @@
+{
+  "id": "gallery",
+  "label": "Galería de instalaciones",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "images": {
+        "type": "Group",
+        "config": {
+          "label": "Imágenes",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Imagen",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

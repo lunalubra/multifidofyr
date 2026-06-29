@@ -1,9 +1,9 @@
 "use client";
 
 import { type FC } from "react";
-import { type Content } from "@prismicio/client";
+import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
-import Image from "next/image";
+import { PrismicNextImage } from "@prismicio/next";
 import { SectionWrapper } from "@/components/SectionWrapper/SectionWrapper";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import styles from "./index.module.css";
@@ -19,7 +19,9 @@ const EquipmentSection: FC<EquipmentSectionProps> = ({ slice }) => {
   return (
     <SectionWrapper id={slice.primary.section_id || "tecnologia"} elevated>
       <div className={styles.header} ref={headerRef}>
-        <span className={styles.eyebrow}>Tecnología</span>
+        <span className={styles.eyebrow}>
+          {slice.primary.eyebrow || "Tecnología"}
+        </span>
         <div className={styles.heading}>
           <PrismicRichText field={slice.primary.heading} />
         </div>
@@ -32,7 +34,7 @@ const EquipmentSection: FC<EquipmentSectionProps> = ({ slice }) => {
 
       <div className={styles.list} ref={listRef}>
         {slice.items.map((item, i) => {
-          const hasImage = Boolean(item.equipment_image_url);
+          const hasImage = isFilled.image(item.equipment_image);
           return (
             <div
               key={i}
@@ -42,19 +44,21 @@ const EquipmentSection: FC<EquipmentSectionProps> = ({ slice }) => {
             >
               {hasImage ? (
                 <div className={styles.imageWrapper}>
-                  <Image
-                    src={item.equipment_image_url as string}
-                    alt={item.equipment_name || "Equipamiento clínico"}
+                  <PrismicNextImage
+                    field={item.equipment_image}
                     width={600}
                     height={400}
                     className={styles.image}
                     loading="lazy"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    fallbackAlt=""
                   />
                 </div>
               ) : (
                 <div className={styles.imagePlaceholder} aria-hidden="true">
-                  <span className={styles.placeholderLabel}>Próximamente</span>
+                  <span className={styles.placeholderLabel}>
+                    {slice.primary.coming_soon_label || "Próximamente"}
+                  </span>
                 </div>
               )}
               <div className={styles.content}>

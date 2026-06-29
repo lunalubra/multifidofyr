@@ -11,6 +11,7 @@
     ],
     "primary": {
       "section_id": "servicios",
+      "eyebrow": "Que Ofrecemos",
       "heading": [{ "type": "heading2", "text": "Nuestros Servicios", "spans": [] }],
       "description": [{ "type": "paragraph", "text": "Ofrecemos una amplia gama de servicios.", "spans": [] }]
     }

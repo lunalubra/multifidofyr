@@ -18,6 +18,13 @@
             "placeholder": "servicios"
           }
         },
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Etiqueta superior",
+            "placeholder": "Que Ofrecemos"
+          }
+        },
         "heading": {
           "type": "StructuredText",
           "config": {

@@ -1,7 +1,7 @@
 "use client";
 
 import { type FC } from "react";
-import { type Content } from "@prismicio/client";
+import { type Content, asImageSrc, isFilled } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import { Container } from "@/components/Container/Container";
@@ -23,7 +23,9 @@ const VideoSection: FC<VideoSectionProps> = ({ slice }) => {
     >
       <Container>
         <div className={styles.header} ref={headerRef}>
-          <span className={styles.eyebrow}>Conócenos</span>
+          <span className={styles.eyebrow}>
+            {slice.primary.eyebrow || "Conócenos"}
+          </span>
           <div className={styles.heading}>
             <PrismicRichText field={slice.primary.heading} />
           </div>
@@ -35,7 +37,14 @@ const VideoSection: FC<VideoSectionProps> = ({ slice }) => {
         </div>
 
         <div className={styles.videoGrid} ref={gridRef}>
-          {slice.items.map((item, i) => (
+          {slice.items.map((item, i) => {
+            const videoSrc = isFilled.linkToMedia(item.video_file)
+              ? item.video_file.url
+              : "";
+            const poster =
+              asImageSrc(slice.primary.poster_image) ||
+              "/images/clinic/recepcion-bienvenida.jpg";
+            return (
             <div key={i} className={styles.videoCard}>
               <div className={styles.videoFrame}>
                 <video
@@ -43,9 +52,9 @@ const VideoSection: FC<VideoSectionProps> = ({ slice }) => {
                   controls
                   preload="metadata"
                   playsInline
-                  poster="/images/clinic/recepcion-bienvenida.jpg"
+                  poster={poster}
                 >
-                  <source src={item.video_url || ""} type="video/mp4" />
+                  <source src={videoSrc} type="video/mp4" />
                   Tu navegador no soporta la reproducción de vídeo.
                 </video>
               </div>
@@ -58,7 +67,8 @@ const VideoSection: FC<VideoSectionProps> = ({ slice }) => {
                 </div>
               )}
             </div>
-          ))}
+            );
+          })}
         </div>
       </Container>
     </section>

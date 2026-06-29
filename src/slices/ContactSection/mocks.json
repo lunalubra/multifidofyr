@@ -7,12 +7,23 @@
     "primary": {
       "section_id": "contacto",
       "heading": [{ "type": "heading2", "text": "Contacto", "spans": [] }],
+      "booking_label": "Reserve una cita",
+      "doctoralia_widget_url": "https://www.doctoralia.es/clinicas/multifido-fisioterapia-y-readaptacion",
+      "doctoralia_facility": "multifido-fisioterapia-y-readaptacion",
+      "map_embed_url": "https://www.google.com/maps/embed?pb=!1m18",
+      "label_address": "Direccion",
       "address": [{ "type": "paragraph", "text": "Calle Valdemoro 11, 28914 Leganes, Madrid", "spans": [] }],
-      "email": "multifidofyr@gmail.com",
+      "label_phone": "Telefono",
       "phone": "604940941",
+      "label_email": "Email",
+      "email": "multifidofyr@gmail.com",
+      "label_hours": "Horario",
       "hours_weekday": "Lunes a Viernes: 10:00-14:00 y 16:00-20:00",
       "hours_saturday": "Sabados: 09:00-13:00",
-      "doctoralia_link": { "link_type": "Web", "url": "#" }
+      "doctoralia_link": { "link_type": "Web", "url": "https://www.doctoralia.es/clinicas/multifido-fisioterapia-y-readaptacion" },
+      "doctoralia_label": "Reservar en Doctoralia",
+      "directions_link": { "link_type": "Web", "url": "https://maps.google.com/?q=Calle+Valdemoro+11" },
+      "directions_label": "Como llegar"
     }
   }
 ]

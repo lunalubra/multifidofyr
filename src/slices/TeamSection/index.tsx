@@ -1,9 +1,9 @@
 "use client";
 
 import { type FC } from "react";
-import { type Content } from "@prismicio/client";
+import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
-import Image from "next/image";
+import { PrismicNextImage } from "@prismicio/next";
 import { Container } from "@/components/Container/Container";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import styles from "./index.module.css";
@@ -23,7 +23,9 @@ const TeamSection: FC<TeamSectionProps> = ({ slice }) => {
     >
       <Container>
         <div className={styles.header} ref={headerRef}>
-          <span className={styles.eyebrow}>Nuestro Equipo</span>
+          <span className={styles.eyebrow}>
+            {slice.primary.eyebrow || "Nuestro Equipo"}
+          </span>
           <div className={styles.heading}>
             <PrismicRichText field={slice.primary.heading} />
           </div>
@@ -40,14 +42,14 @@ const TeamSection: FC<TeamSectionProps> = ({ slice }) => {
             return (
               <div key={i} className={styles.card}>
                 <div className={styles.avatarWrapper}>
-                  {member.photo_url ? (
-                    <Image
-                      src={member.photo_url}
-                      alt={member.name || "Profesional de Multífido"}
+                  {isFilled.image(member.photo) ? (
+                    <PrismicNextImage
+                      field={member.photo}
                       width={240}
                       height={300}
                       className={styles.portrait}
                       sizes="(max-width: 480px) 60vw, 120px"
+                      fallbackAlt=""
                     />
                   ) : (
                     <div className={styles.avatar} aria-hidden="true">
