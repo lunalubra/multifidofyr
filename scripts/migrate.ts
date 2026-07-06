@@ -184,6 +184,12 @@ function image(publicPath: string, alt: string) {
 
 // Link-to-media field value (videos). Reuses an existing library asset when
 // present, otherwise registers the local file for upload.
+//
+// Every image slot on the site (hero background, team photos, equipment,
+// gallery items) has a sibling optional video field in its model — seed it
+// with `media("/videos/<clip>.mp4")` next to its `image(...)`. A filled video
+// counts toward the ~10-asset-per-document Migration API cap, same as an
+// image — budget for it before adding one.
 function media(publicPath: string) {
   const filename = path.basename(publicPath);
   const existing = existingAssets.get(filename);
@@ -213,7 +219,9 @@ const GALLERY_IMAGES: Array<[string, string]> = [
 ];
 
 // The `gallery` singleton holds every clinic photo (7 images = 7 assets, under
-// the per-document cap).
+// the per-document cap). Each item also accepts an optional `video` —
+// `{ image: image(...), video: media("/videos/<clip>.mp4") }` — shown as an
+// autoplaying loop in the grid and a player in the lightbox.
 function buildGalleryData() {
   return {
     images: GALLERY_IMAGES.map(([file, alt]) => ({ image: image(file, alt) })),
@@ -244,6 +252,8 @@ function buildPageData() {
             "/images/clinic/sala-ejercicio.jpg",
             "Sala de ejercicio de la clínica Multífido"
           ),
+          // background_video: media("/videos/<clip>.mp4") — optional ambient
+          // video; when filled it replaces the image (which becomes the poster).
         },
         items: [],
       },
@@ -307,6 +317,7 @@ function buildPageData() {
             role: "CEO y Fisioterapeuta",
             credentials: "Colegiada nº 2844",
             photo: image("/images/team/alicia.jpg", "Alicia Martín Pérez"),
+            // photo_video: media(...) — optional, replaces the portrait.
             bio: [
               li(
                 "Especialista en prevención y readaptación de lesiones en crosstraining"
@@ -431,6 +442,7 @@ function buildPageData() {
               "/images/equipment/ecografo.webp",
               "Ecógrafo Mindray"
             ),
+            // equipment_video: media(...) — optional, replaces the image.
           },
           {
             equipment_name: "Agupunt APS",

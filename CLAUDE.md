@@ -73,6 +73,10 @@ Three API routes manage the Prismic integration — keep them as-is:
 - `page` (`customtypes/page/index.json`): UID + title + slice zone (lists every available slice in `choices`) + SEO fields. Slice Machine maintains the `choices` list — adding a new slice without registering it here means it cannot be added to a page in the Page Builder.
 - `blog_post` (`customtypes/blog_post/index.json`): UID, title, featured_image, excerpt, category, publication_date, author, rich-text-only slice zone, SEO fields.
 
+### Media slots (image + optional video)
+
+Every content image field has a sibling optional link-to-media field (`background_video`, `equipment_video`, `photo_video`, gallery `video`) so editors can swap any image for a video. Render these pairs with `src/components/PrismicMedia/PrismicMedia.tsx` — never `PrismicNextImage` directly. It plays a filled video as an ambient loop (autoplay/muted/loop, image as poster, reduced-motion aware), or with `mode="player"` shows native controls (VideoSection, gallery lightbox); otherwise it falls back to the image, then to the `fallback` prop. When adding a new slice with an image, add the paired video field and use this component. SEO fields (`meta_image`, blog `featured_image`) stay image-only.
+
 ### Styling system
 
 Global design tokens live in `src/app/globals.css` (CSS custom properties): Radix Colors palettes (grass/olive/sand/red/alpha), 4px-base spacing scale, fluid type scale via `clamp()`, warm "premium" surfaces, shadows, radii, easings, durations. Per-component styles are CSS Modules colocated with each component/slice (`*.module.css`). Fonts (Playfair Display headings, Inter body) are loaded via `next/font/google` in `src/app/layout.tsx` and exposed as `--font-playfair` / `--font-inter`.

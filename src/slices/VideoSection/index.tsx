@@ -1,9 +1,10 @@
 "use client";
 
 import { type FC } from "react";
-import { type Content, asImageSrc, isFilled } from "@prismicio/client";
+import { type Content } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
+import { PrismicMedia } from "@/components/PrismicMedia/PrismicMedia";
 import { Container } from "@/components/Container/Container";
 import styles from "./index.module.css";
 
@@ -37,26 +38,18 @@ const VideoSection: FC<VideoSectionProps> = ({ slice }) => {
         </div>
 
         <div className={styles.videoGrid} ref={gridRef}>
-          {slice.items.map((item, i) => {
-            const videoSrc = isFilled.linkToMedia(item.video_file)
-              ? item.video_file.url
-              : "";
-            const poster =
-              asImageSrc(slice.primary.poster_image) ||
-              "/images/clinic/recepcion-bienvenida.jpg";
-            return (
+          {slice.items.map((item, i) => (
             <div key={i} className={styles.videoCard}>
               <div className={styles.videoFrame}>
-                <video
+                <PrismicMedia
+                  image={slice.primary.poster_image}
+                  video={item.video_file}
+                  mode="player"
+                  width={800}
+                  height={450}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className={styles.video}
-                  controls
-                  preload="metadata"
-                  playsInline
-                  poster={poster}
-                >
-                  <source src={videoSrc} type="video/mp4" />
-                  Tu navegador no soporta la reproducción de vídeo.
-                </video>
+                />
               </div>
               {item.video_title && (
                 <div className={styles.videoInfo}>
@@ -67,8 +60,7 @@ const VideoSection: FC<VideoSectionProps> = ({ slice }) => {
                 </div>
               )}
             </div>
-            );
-          })}
+          ))}
         </div>
       </Container>
     </section>

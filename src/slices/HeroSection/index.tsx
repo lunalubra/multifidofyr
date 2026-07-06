@@ -1,10 +1,10 @@
 "use client";
 
 import { type FC, useEffect, useRef } from "react";
-import { type Content, asLink, isFilled } from "@prismicio/client";
+import { type Content, asLink } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
 import Image from "next/image";
+import { PrismicMedia } from "@/components/PrismicMedia/PrismicMedia";
 import styles from "./index.module.css";
 
 type HeroSectionProps = SliceComponentProps<Content.HeroSectionSlice>;
@@ -31,25 +31,24 @@ const HeroSection: FC<HeroSectionProps> = ({ slice }) => {
   return (
     <section className={styles.hero} data-slice-type={slice.slice_type}>
       <div className={styles.imageContainer} ref={imageRef}>
-        {isFilled.image(slice.primary.background_image) ? (
-          <PrismicNextImage
-            field={slice.primary.background_image}
-            fill
-            priority
-            sizes="100vw"
-            className={styles.bgImage}
-            fallbackAlt=""
-          />
-        ) : (
-          <Image
-            src="/images/clinic/sala-ejercicio.jpg"
-            alt="Clínica Multífido Fisioterapia"
-            fill
-            priority
-            sizes="100vw"
-            className={styles.bgImage}
-          />
-        )}
+        <PrismicMedia
+          image={slice.primary.background_image}
+          video={slice.primary.background_video}
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImage}
+          fallback={
+            <Image
+              src="/images/clinic/sala-ejercicio.jpg"
+              alt="Clínica Multífido Fisioterapia"
+              fill
+              priority
+              sizes="100vw"
+              className={styles.bgImage}
+            />
+          }
+        />
         <div className={styles.overlay} />
       </div>
 

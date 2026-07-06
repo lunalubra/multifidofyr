@@ -60,6 +60,13 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "background_video": {
+          "type": "Link",
+          "config": {
+            "label": "Video de fondo (opcional, sustituye a la imagen)",
+            "select": "media"
+          }
         }
       },
       "items": {}

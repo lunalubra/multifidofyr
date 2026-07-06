@@ -3,7 +3,7 @@
 import { type FC } from "react";
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicMedia } from "@/components/PrismicMedia/PrismicMedia";
 import { SectionWrapper } from "@/components/SectionWrapper/SectionWrapper";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import styles from "./index.module.css";
@@ -34,24 +34,26 @@ const EquipmentSection: FC<EquipmentSectionProps> = ({ slice }) => {
 
       <div className={styles.list} ref={listRef}>
         {slice.items.map((item, i) => {
-          const hasImage = isFilled.image(item.equipment_image);
+          const hasMedia =
+            isFilled.image(item.equipment_image) ||
+            isFilled.linkToMedia(item.equipment_video);
           return (
             <div
               key={i}
               className={styles.card}
-              data-reverse={hasImage && i % 2 === 1 ? "" : undefined}
-              data-no-image={!hasImage ? "" : undefined}
+              data-reverse={hasMedia && i % 2 === 1 ? "" : undefined}
+              data-no-image={!hasMedia ? "" : undefined}
             >
-              {hasImage ? (
+              {hasMedia ? (
                 <div className={styles.imageWrapper}>
-                  <PrismicNextImage
-                    field={item.equipment_image}
+                  <PrismicMedia
+                    image={item.equipment_image}
+                    video={item.equipment_video}
                     width={600}
                     height={400}
                     className={styles.image}
                     loading="lazy"
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    fallbackAlt=""
                   />
                 </div>
               ) : (

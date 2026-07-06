@@ -44,6 +44,10 @@
         "equipment_image": {
           "type": "Image",
           "config": { "label": "Imagen del equipo", "constraint": {}, "thumbnails": [] }
+        },
+        "equipment_video": {
+          "type": "Link",
+          "config": { "label": "Video del equipo (opcional, sustituye a la imagen)", "select": "media" }
         }
       }
     }

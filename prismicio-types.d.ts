@@ -35,6 +35,7 @@ export type PageDocument<Lang extends string = string> =
  */
 export interface GalleryDocumentDataImagesItem {
   image: prismic.ImageField<never>;
+  video: prismic.LinkToMediaField;
 }
 
 /**
@@ -82,6 +83,7 @@ export interface HeroSectionSliceDefaultPrimary {
   cta_secondary_label: prismic.KeyTextField;
   cta_secondary_link: prismic.LinkField;
   background_image: prismic.ImageField<never>;
+  background_video: prismic.LinkToMediaField;
 }
 
 export type HeroSectionSliceDefault = prismic.SharedSliceVariation<
@@ -165,6 +167,7 @@ export interface TeamSectionSliceDefaultItem {
   credentials: prismic.KeyTextField;
   bio: prismic.RichTextField;
   photo: prismic.ImageField<never>;
+  photo_video: prismic.LinkToMediaField;
 }
 
 export type TeamSectionSliceDefault = prismic.SharedSliceVariation<
@@ -215,6 +218,7 @@ export interface EquipmentSectionSliceDefaultItem {
   equipment_name: prismic.KeyTextField;
   equipment_description: prismic.RichTextField;
   equipment_image: prismic.ImageField<never>;
+  equipment_video: prismic.LinkToMediaField;
 }
 
 export type EquipmentSectionSliceDefault = prismic.SharedSliceVariation<

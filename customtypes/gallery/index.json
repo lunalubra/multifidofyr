@@ -18,6 +18,13 @@
                 "constraint": {},
                 "thumbnails": []
               }
+            },
+            "video": {
+              "type": "Link",
+              "config": {
+                "label": "Video (opcional, sustituye a la imagen)",
+                "select": "media"
+              }
             }
           }
         }

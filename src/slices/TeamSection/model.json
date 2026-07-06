@@ -52,6 +52,13 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "photo_video": {
+          "type": "Link",
+          "config": {
+            "label": "Video del retrato (opcional, sustituye a la imagen)",
+            "select": "media"
+          }
         }
       }
     }

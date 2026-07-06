@@ -3,7 +3,7 @@
 import { type FC, useState, useEffect, useCallback } from "react";
 import { type Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, type SliceComponentProps } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicMedia } from "@/components/PrismicMedia/PrismicMedia";
 import { Container } from "@/components/Container/Container";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import styles from "./index.module.css";
@@ -79,7 +79,9 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice, context }) => {
         <div className={styles.grid} ref={gridRef}>
           {items.map((item, i) => {
             const alt =
-              (isFilled.image(item.image) && item.image.alt) || "imagen";
+              (isFilled.image(item.image) && item.image.alt) ||
+              (isFilled.linkToMedia(item.video) && "video") ||
+              "imagen";
             return (
               <button
                 key={i}
@@ -87,14 +89,14 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice, context }) => {
                 onClick={() => setSelectedIndex(i)}
                 aria-label={`Ver ${alt} en pantalla completa`}
               >
-                <PrismicNextImage
-                  field={item.image}
+                <PrismicMedia
+                  image={item.image}
+                  video={item.video}
                   width={600}
                   height={450}
                   className={styles.image}
                   loading="lazy"
                   sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                  fallbackAlt=""
                 />
               </button>
             );
@@ -158,14 +160,15 @@ const ClinicGallery: FC<ClinicGalleryProps> = ({ slice, context }) => {
             className={styles.lightboxImageWrapper}
             onClick={(e) => e.stopPropagation()}
           >
-            <PrismicNextImage
-              field={selectedItem.image}
+            <PrismicMedia
+              image={selectedItem.image}
+              video={selectedItem.video}
+              mode="player"
               width={1200}
               height={900}
               className={styles.lightboxImage}
               sizes="90vw"
               priority
-              fallbackAlt=""
             />
           </div>
 
